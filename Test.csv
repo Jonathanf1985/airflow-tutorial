@@ -6,13 +6,13 @@ AND exportKey in (   SELECT exportKey FROM
 (     SELECT exportKey, exportTimeUsec, MAX(exportTimeUsec) OVER (PARTITION BY visitKey) AS maxexportTimeUsec 
 FROM `minutemediadwh.136864690.ga_realtime_sessions_2020*`  WHERE _TABLE_SUFFIX = FORMAT_DATE('%m%d', CURRENT_DATE())  )   WHERE exportTimeUsec >= maxexportTimeUsec )
 
-",YES,2021-07-18 15:32:30.014400
+",YES,2021-07-18 16:33:47.094433
 ga_realtime_sessions_view_177343,"SELECT *
 FROM `minutemediadwh.177343.ga_realtime_sessions_2020*` 
 WHERE _TABLE_SUFFIX = FORMAT_DATE('%m%d', CURRENT_DATE())
 AND exportKey in (   SELECT exportKey FROM   
 (     SELECT exportKey, exportTimeUsec, MAX(exportTimeUsec) OVER (PARTITION BY visitKey) AS maxexportTimeUsec 
-FROM `minutemediadwh.177343.ga_realtime_sessions_2020*`  WHERE _TABLE_SUFFIX = FORMAT_DATE('%m%d', CURRENT_DATE())  )   WHERE exportTimeUsec >= maxexportTimeUsec )",YES,2021-07-18 15:32:30.014400
+FROM `minutemediadwh.177343.ga_realtime_sessions_2020*`  WHERE _TABLE_SUFFIX = FORMAT_DATE('%m%d', CURRENT_DATE())  )   WHERE exportTimeUsec >= maxexportTimeUsec )",YES,2021-07-18 16:33:47.094433
 queries_cost_test_v,"select 
 protopayload_auditlog.servicedata_v1_bigquery.jobCompletedEvent.job.jobConfiguration.query.query	as jobConfiguration_query,
 protopayload_auditlog.servicedata_v1_bigquery.jobQueryRequest.query as jobQueryRequest_query,
@@ -36,7 +36,7 @@ sum(protopayload_auditlog.servicedata_v1_bigquery.jobQueryDoneResponse.job.jobSt
 from `minutemediadwh.AuditLogs.cloudaudit_googleapis_com_data_access_20200314`
 where protopayload_auditlog.servicedata_v1_bigquery.jobQueryResponse.job.jobStatistics.totalBilledBytes is not null
 group by 1,2
-;",YES,2021-07-18 15:32:30.014400
+;",YES,2021-07-18 16:33:47.094433
 quality_score_final_query,"Select *, 
 CASE WHEN ads_to_embeds is not null and firstplay_to_player_embed is not null and video_25_to_first_play is not null
 THEN CPM_SCORE*0.15 + CTR_SCORE*0.125 + VIEWABILITY_SCORE*0.08 + ADS_TO_EMBEDS_SCORE*0.16 + FIRSTPLAY_TO_EMBED_SCORE*0.105 + VIDEO_25_TO_FIRST_PLAY_SCORE*0.16 + FILL_SCORE*0.07 + IVT_SCORE*0.15 
@@ -419,7 +419,7 @@ sum(Total_unmatched_ad_requests) as unfilled_impressions,
     
 
 
-",YES,2021-07-18 15:32:30.014400
+",YES,2021-07-18 16:33:47.094433
 partners_inactive_last_30_days,"--Select FORMAT_DATE('%B, %Y', date) as Month, Partner, MMPartner, sum(Revenue) as Revenue from email.a_revenue_total group by 1,2,3 order by 1 desc
 Select 
 a.MMPartner as MMPartner, 
@@ -434,7 +434,7 @@ left join
 group by 1) b
 ON lower(a.MMPartner) = lower(b.MMPartner)
 where revenue_previous_30_days >= 200
-and a.MMPartner <> 'NA'",YES,2021-07-18 15:32:30.014400
+and a.MMPartner <> 'NA'",YES,2021-07-18 16:33:47.094433
 facebook_master_view_all_test,"WITH fb_data AS (
   SELECT     
     COALESCE(campaign_assets_video.campaign_asset_id,campaign_assets_posts.campaign_asset_id) AS fb_campaign_asset_id,
@@ -499,4 +499,4 @@ SELECT
 FROM fb_data
 LEFT JOIN  `tpt-platform.insights_airtable.master_view` AS campaign_assets
 ON campaign_assets.campaign_asset_id = fb_data.fb_campaign_asset_id
-ORDER BY campaign_asset_campaign_code desc, campaign_asset_published desc",YES,2021-07-18 15:32:30.014400
+ORDER BY campaign_asset_campaign_code desc, campaign_asset_published desc",YES,2021-07-18 16:33:47.094433
