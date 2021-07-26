@@ -6,10 +6,10 @@ AND exportKey in (   SELECT exportKey FROM
 (     SELECT exportKey, exportTimeUsec, MAX(exportTimeUsec) OVER (PARTITION BY visitKey) AS maxexportTimeUsec 
 FROM `minutemediadwh.136864690.ga_realtime_sessions_2020*`  WHERE _TABLE_SUFFIX = FORMAT_DATE('%m%d', CURRENT_DATE())  )   WHERE exportTimeUsec >= maxexportTimeUsec )
 
-",YES,2021-07-18 16:57:45.065838
+",YES,2021-07-26 11:59:53.463215
 ga_realtime_sessions_view_177343,"SELECT *
 FROM `minutemediadwh.177343.ga_realtime_sessions_2020*` 
 WHERE _TABLE_SUFFIX = FORMAT_DATE('%m%d', CURRENT_DATE())
 AND exportKey in (   SELECT exportKey FROM   
 (     SELECT exportKey, exportTimeUsec, MAX(exportTimeUsec) OVER (PARTITION BY visitKey) AS maxexportTimeUsec 
-FROM `minutemediadwh.177343.ga_realtime_sessions_2020*`  WHERE _TABLE_SUFFIX = FORMAT_DATE('%m%d', CURRENT_DATE())  )   WHERE exportTimeUsec >= maxexportTimeUsec )",YES,2021-07-18 16:57:45.065838
+FROM `minutemediadwh.177343.ga_realtime_sessions_2020*`  WHERE _TABLE_SUFFIX = FORMAT_DATE('%m%d', CURRENT_DATE())  )   WHERE exportTimeUsec >= maxexportTimeUsec )",YES,2021-07-26 11:59:53.463215
